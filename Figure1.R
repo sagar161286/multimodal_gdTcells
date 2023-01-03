@@ -46,3 +46,47 @@ bind_cols(multimodal_gd_gex@meta.data, as.data.frame(multimodal_gd_gex@reduction
 custom_colors <- list()
 custom_colors$discrete <- c('#12CBC4','#FFC312','#833471','#1289A7',"grey",'#A3CB38','#D980FA','#ED4C67')
 DimPlot(multimodal_gd_gex, group.by = "organ",reduction = "umap",cols = custom_colors$discrete)
+
+
+# FIGURE 1E
+
+metadata.wo.pooled <- subset(multimodal_gd_gex@meta.data, multimodal_gd_gex@meta.data$organ %in% c("LI","liver","LN","lung","SI","skin","spleen"))
+
+table_clusters_by_organ <- metadata.wo.pooled %>%
+  dplyr::rename('cluster' = 'seurat_clusters') %>%
+  group_by(cluster, organ) %>%
+  summarize(count = n()) %>%
+  spread(organ, count, fill = 0) %>%
+  ungroup() %>%
+  mutate(total_cell_count = rowSums(.[c(2:ncol(.))])) %>%
+  select(c('cluster', 'total_cell_count', everything())) %>%
+  arrange(factor(cluster, levels = levels(metadata.wo.pooled$seurat_clusters)))
+
+knitr::kable(table_clusters_by_organ)
+
+temp_labels <- metadata.wo.pooled %>%
+  group_by(seurat_clusters) %>%
+  tally() %>%
+  dplyr::rename('cluster' = seurat_clusters)
+
+custom_colors$discrete <- c('#12CBC4','#FFC312','#833471','#1289A7','#A3CB38','#D980FA','#ED4C67')
+table_clusters_by_organ %>%
+  select(-c('total_cell_count')) %>%
+  reshape2::melt(id.vars = 'cluster') %>%
+  mutate(cluster = factor(cluster, levels = levels(multimodal_gd_gex@meta.data$seurat_clusters))) %>%
+  ggplot(aes(cluster, value)) +
+  geom_bar(aes(fill = variable), position = 'stack', stat = 'identity') +
+  scale_fill_manual(name = 'Sample', values = custom_colors$discrete) +
+  scale_y_continuous(labels = scales::comma, expand = c(0.01, 0)) +
+  coord_cartesian(clip = 'off') +
+  theme_bw() +
+  theme(
+    legend.position = 'right',
+    plot.title = element_text(hjust = 0.5),
+    text = element_text(size = 16),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.title = element_blank(),
+    plot.margin = margin(t = 20, r = 0, b = 0, l = 10, unit = 'pt')
+  )
+
