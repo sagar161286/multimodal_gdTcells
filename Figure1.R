@@ -40,3 +40,9 @@ bind_cols(multimodal_gd_gex@meta.data, as.data.frame(multimodal_gd_gex@reduction
     name = 'Cluster', values = custom_colors$discrete,
     guide = guide_legend(override.aes = list(size = 2))
   )
+
+# FIGURE 1D
+
+custom_colors <- list()
+custom_colors$discrete <- c('#12CBC4','#FFC312','#833471','#1289A7',"grey",'#A3CB38','#D980FA','#ED4C67')
+DimPlot(multimodal_gd_gex, group.by = "organ",reduction = "umap",cols = custom_colors$discrete)
