@@ -1,4 +1,5 @@
-# download gd_holygrail_filtered_final.rds from here: 
+# download gd_holygrail_filtered_final.rds from here: https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
+
 multimodal_gd_gex <- readRDS("gd_holygrail_filtered_final.rds")
 
 library(Seurat)
