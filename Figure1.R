@@ -90,3 +90,21 @@ table_clusters_by_organ %>%
     plot.margin = margin(t = 20, r = 0, b = 0, l = 10, unit = 'pt')
   )
 
+# FIGURE 1F
+
+avg.exp <- AverageExpression(multimodal_gd_gex,features = VariableFeatures(multimodal_gd_gex), group.by = "organ")
+avg.exp <- as.data.frame(avg.exp$RNA)
+avg.exp$pooled <- NULL
+
+library(factoextra)
+res.pca <- prcomp(t(avg.exp))
+fviz_eig(res.pca)
+
+dat <- as.data.frame(res.pca$x[,c(1:2)])
+dat$organ <- rownames(dat)
+library(ggrepel)
+ggplot(dat, aes(x = PC1, y = PC2)) + geom_point(aes(color = organ), size=3) +
+  geom_text_repel(aes(label = organ,  color = organ), size = 5)+
+  scale_color_manual(values = c('#12CBC4','#FFC312','#833471','#1289A7','#A3CB38','#D980FA','#ED4C67')) +
+  theme_bw() + geom_hline(yintercept=0, linetype="dashed") + geom_vline(xintercept=0, linetype="dashed")
+
