@@ -1,6 +1,7 @@
-multimodal_gd_gex <- readRDS("/data/gruen/sagar2/R/multimodal_gd/combined_analysis/gd_holygrail_filtered_final.rds")
+multimodal_gd_gex <- readRDS("gd_holygrail_filtered_final.rds")
 
 # figure 2a
+
 custom_colors <- list()
 colors_dutch <- c(
   '#FFC312','#C4E538','#12CBC4','#FDA7DF','#ED4C67',
@@ -70,11 +71,13 @@ ggplot(data, aes(x, id = id, split = y, value = n)) +
   )
 
 # figure 2b
+
 custom_colors2 <- list()
 custom_colors2$discrete <- c('#FFC312','#C4E538','#12CBC4','#FDA7DF','grey','#ED4C67','#1289A7','#D980FA','#B53471')
 DimPlot(multimodal_gd_gex, group.by = "celltypes",reduction = "umap",cols = custom_colors2$discrete)
 
 # figure 2c
+
 avg.exp <- AverageExpression(multimodal_gd_gex,features = VariableFeatures(multimodal_gd_gex), group.by = "celltypes")
 avg.exp <- as.data.frame(avg.exp$RNA)
 avg.exp$pooled <- NULL
@@ -94,6 +97,7 @@ ggplot(dat, aes(x = PC1, y = PC2)) + geom_point(aes(color = celltype), size=3) +
 
 
 # figure 2d
+
 Idents(multimodal_gd_gex) <- "seurat_clusters"
 cluster.order <- c(0,7,11,2,8,18,14,12,4,1,9,16,20,6,10,15,17,3,5,19,13,21)
 factor(Idents(multimodal_gd_gex), levels= c(0,7,11,2,8,18,14,12,4,1,9,16,20,6,10,15,17,3,5,19,13,21))
@@ -109,6 +113,7 @@ DotPlot(multimodal_gd_gex, features = c("Sell","S1pr1","Tcf7","Lef1","Cd8b1","My
 
 
 # figure 2e
+
 metadata.organ <- subset(multimodal_gd_gex@meta.data, multimodal_gd_gex@meta.data$organ %in% c("LI","liver","SI","lung","spleen","skin","LN"))
 clusters <- unique(metadata.organ$organ)
 cell_types <- sort(unique(metadata.organ$celltypes))
