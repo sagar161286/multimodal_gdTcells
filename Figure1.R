@@ -1,8 +1,11 @@
+# download gd_holygrail_filtered_final.rds from here: 
 multimodal_gd_gex <- readRDS("gd_holygrail_filtered_final.rds")
 
 library(Seurat)
 library(ggplot2)
 library(tidyverse)
+
+# FIGURE 1C
 
 custom_colors <- list()
 colors_dutch <- c('#FFC312','#C4E538','#12CBC4','#FDA7DF','#ED4C67','#A3CB38','#1289A7','#D980FA','#B53471','#EE5A24','#009432','#0652DD','#9980FA','#833471','#EA2027','#006266')
