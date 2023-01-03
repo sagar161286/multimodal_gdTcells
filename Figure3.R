@@ -1,4 +1,6 @@
-gd_citeseq <- readRDS("/data/gruen/sagar2/R/multimodal_gd/citeseq_allgd_manuscript/gd_holygrail_final_oct20_citeseq_batch.rds")
+# please download gd_holygrail_final_oct20_citeseq_batch.rds here: https://drive.google.com/file/d/1WrHVbtPh_hk4YffVOoVXXJrzYkWP0dc-/view?usp=share_link
+
+gd_citeseq <- readRDS("gd_holygrail_final_oct20_citeseq_batch.rds")
 
 # figure 3b
 
