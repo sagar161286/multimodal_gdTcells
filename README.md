@@ -9,6 +9,11 @@ Please download Seurat R object for gene expression analysis used in Figures 1, 
 https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
 Afterwards, please run R scripts Figure1.R, Figure2.R and Figure3.R to reproduce figures in the paper.
 
+The Seurat R object for gene expression as well as TotalSeq analysis used in Figure 3 here:
+https://drive.google.com/file/d/1WrHVbtPh_hk4YffVOoVXXJrzYkWP0dc-/view?usp=share_link
+Afterwards, please run R script Figure3.R to reproduce figures in panel 3 in the paper.
+
+
 
 
 ABSTRACT
