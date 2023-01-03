@@ -1,4 +1,6 @@
-multimodal_gd_gex <- readRDS("/data/gruen/sagar2/R/multimodal_gd/combined_analysis/gd_holygrail_filtered_final.rds")
+# download gd_holygrail_filtered_final.rds from here: https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
+
+multimodal_gd_gex <- readRDS("gd_holygrail_filtered_final.rds")
 
 #figure 4a
 Idents(multimodal_gd_gex) <- "celltypes"
