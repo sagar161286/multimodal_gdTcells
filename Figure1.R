@@ -5,6 +5,22 @@ library(Seurat)
 library(ggplot2)
 library(tidyverse)
 
+# FIGURE 1B
+
+library(tidyr)
+multimodal_gd_gex@meta.data$organ <- multimodal_gd_gex@meta.data$organ %>% replace_na('pooled')
+
+types <- as.data.frame(multimodal_gd_gex@meta.data)
+types2 <- types$organ
+counts <- as.data.frame.matrix(table(types2,types$organ))
+counts <- as.data.frame(t(colSums(counts)))
+counts <- as.data.frame(t(counts))
+colnames(counts) <- c("no_of_cells")
+counts$organs <- rownames(counts)
+counts <- counts[order(counts$no_of_cells, decreasing = T),]
+barplot(counts$no_of_cells, main="No of cells", horiz=TRUE, names.arg=rownames(counts),las=2, xlim = c(0,25000),xaxt='n', col = c("grey", '#FFC312','#12CBC4','#833471','#ED4C67','#A3CB38','#1289A7','#D980FA'), border = NA)
+axis(side=1, at=seq(0, 25000, by=2500), las=2)
+
 # FIGURE 1C
 
 custom_colors <- list()
