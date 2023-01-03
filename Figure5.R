@@ -1,4 +1,6 @@
-gd_atac <- readRDS("/data/gruen/sagar2/R/gd_multiome_scRNAseq_scATACseq/combined_commonpeaks_hm_integrated_only_atac.rds")
+# download combined_commonpeaks_hm_integrated_only_atac.rds from here:
+
+gd_atac <- readRDS("combined_commonpeaks_hm_integrated_only_atac.rds")
 
 library(tidyverse)
 library(scran)
