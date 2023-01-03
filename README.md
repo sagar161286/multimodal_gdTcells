@@ -5,7 +5,7 @@ A single-cell multiomics landscape of gammadelta T cells across multiple organs 
 
 This repository contains the Seurat R object files and the scripts used to generate the figures in the above mentioned manuscript under revision. Please contact me here. sagar@uniklinik-freiburg.de for more details.
 
-Please download Seurat R object for gene expression analysis used in Figure 1, 2 and 4 here:
+Please download Seurat R object for gene expression analysis used in Figures 1, 2 and 4 here:
 https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
 
 ABSTRACT
