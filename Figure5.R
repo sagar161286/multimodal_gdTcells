@@ -1,4 +1,4 @@
-# download combined_commonpeaks_hm_integrated_only_atac.rds from here:
+# download combined_commonpeaks_hm_integrated_only_atac.rds from here: https://drive.google.com/file/d/1LewftPzazsR1Ozy5rp-he2syG18Gr5L1/view?usp=share_link
 
 gd_atac <- readRDS("combined_commonpeaks_hm_integrated_only_atac.rds")
 
