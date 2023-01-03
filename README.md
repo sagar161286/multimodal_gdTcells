@@ -7,7 +7,7 @@ This repository contains the Seurat R object files and the scripts used to gener
 
 Please download Seurat R object for gene expression analysis used in Figures 1, 2 and 4 here:
 https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
-Afterwards, please run R scripts Figure1.R, Figure2.R and Figure3.R to reproduce all the figures in the paper.
+Afterwards, please run R scripts Figure1.R, Figure2.R and Figure3.R to reproduce figures in the paper.
 
 
 
