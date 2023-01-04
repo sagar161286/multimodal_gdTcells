@@ -7,7 +7,7 @@ This repository contains the Seurat R object files and the scripts used to gener
 
 Please download Seurat R object for gene expression analysis used in Figures 1, 2 and 4 here:
 https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
-Afterwards, please run R scripts Figure1.R, Figure2.R and Figure3.R to reproduce figures in the paper.
+Afterwards, please run R scripts Figure1.R, Figure2.R and Figure3.R to reproduce figures in panel 1,2 and 3 in the paper.
 
 Please download the Seurat R object for gene expression as well as TotalSeq analysis used in Figure 3 here:
 https://drive.google.com/file/d/1WrHVbtPh_hk4YffVOoVXXJrzYkWP0dc-/view?usp=share_link
@@ -15,7 +15,7 @@ Afterwards, please run R script Figure3.R to reproduce figures in panel 3 in the
 
 Please download the Seurat R object for chromatin accessibility analysis used in Figures 5 and 6 here:
 https://drive.google.com/file/d/1LewftPzazsR1Ozy5rp-he2syG18Gr5L1/view?usp=share_link
-Afterwards, please run R scripts Figure5.R and Figure5.R to reproduce figures in panel 5 and 6 in the paper.
+Afterwards, please run R scripts Figure5.R and Figure5.R to reproduce figures in panels 5 and 6 in the paper.
 
 
 ABSTRACT
