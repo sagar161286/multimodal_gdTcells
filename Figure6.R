@@ -1,4 +1,6 @@
-gd_atac <- readRDS("/data/gruen/sagar2/R/gd_multiome_scRNAseq_scATACseq/combined_commonpeaks_hm_integrated_only_atac.rds")
+# download combined_commonpeaks_hm_integrated_only_atac.rds from here: https://drive.google.com/file/d/1LewftPzazsR1Ozy5rp-he2syG18Gr5L1/view?usp=share_link
+
+gd_atac <- readRDS("combined_commonpeaks_hm_integrated_only_atac.rds")
 
 library(Signac)
 library(Seurat)
@@ -6,6 +8,7 @@ library(JASPAR2020)
 library(TFBSTools)
 library(BSgenome.Mmusculus.UCSC.mm10)
 library(patchwork)
+
 set.seed(1234)
 
 DefaultAssay(gd_atac) <- "ATAC"
