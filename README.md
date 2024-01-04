@@ -6,18 +6,23 @@ This repository contains the Seurat R object files and the scripts used to gener
 
 Please contact me at sagar@uniklinik-freiburg.de for more details.
 
-Please download Seurat R object for gene expression analysis used in Figures 1, 2 and 4 here:
+Please download Seurat R object for gene expression analysis used in Figures 1 and 2 here:
 https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
-Afterwards, please run R scripts Figure1.R, Figure2.R and Figure3.R to reproduce figures in panels 1, 2 and 3 in the paper.
+Afterwards, please run R scripts Figure1.R, Figure2.R and Figure3.R to reproduce figures in panels 1 and 2 in the paper.
 
 Please download the Seurat R object for gene expression as well as TotalSeq analysis used in Figure 3 here:
 https://drive.google.com/file/d/1WrHVbtPh_hk4YffVOoVXXJrzYkWP0dc-/view?usp=share_link
 Afterwards, please run R script Figure3.R to reproduce figures in panel 3 in the paper.
 
-Please download the Seurat R object for chromatin accessibility analysis used in Figures 5 and 6 here:
+Please download the Seurat R object for chromatin accessibility analysis used in Figure 4 here:
 https://drive.google.com/file/d/1LewftPzazsR1Ozy5rp-he2syG18Gr5L1/view?usp=share_link
-Afterwards, please run R scripts Figure5.R and Figure6.R to reproduce figures in panels 5 and 6 in the paper.
+Afterwards, please run R scripts Figure5.R and Figure6.R to reproduce figures in panel 4 in the paper.
 
+Please download the Seurat R object for TCR repertoire analysis used in Figure 5 here:
+https://drive.google.com/file/d/19mnl5Ytigr98xKFvj1jPqFQcksvOQQcf/view?usp=sharing
+
+The filtered contig annotations file detailing the TCR repertoire of each cell can be download from here:
+https://drive.google.com/file/d/1oMa9cqgvseVPE6Uo5w9oOKZmg4vdINFC/view?usp=sharing
 
 ABSTRACT
 
