@@ -1,9 +1,10 @@
 # multimodal_gdTcells
 
-Multimodal profiling reveals site-specific adaptation and tissue residency hallmarks of gamma delta T cells across epithelial and lymphoid tissues
+du Halgouet, A., Bruder, K., Peltokangas, N. et al. Multimodal profiling reveals site-specific adaptation and tissue residency hallmarks of γδ T cells across organs in mice. Nat Immunol (2024). https://doi.org/10.1038/s41590-023-01710-y
 
+This repository contains the Seurat R object files and the scripts used to generate the figures in the above mentioned manuscript published in Nature Immunology. 
 
-This repository contains the Seurat R object files and the scripts used to generate the figures in the above mentioned manuscript under revision. Please contact me at sagar@uniklinik-freiburg.de for more details.
+Please contact me at sagar@uniklinik-freiburg.de for more details.
 
 Please download Seurat R object for gene expression analysis used in Figures 1, 2 and 4 here:
 https://drive.google.com/file/d/16SeXuyOkRm3y33TqxwIcWewmBY_Nbpfw/view?usp=share_link
@@ -20,8 +21,7 @@ Afterwards, please run R scripts Figure5.R and Figure6.R to reproduce figures in
 
 ABSTRACT
 
-gd T cells are unconventional T cells which, according to their tissue location and microenvironment, perform heterogenous functions in tissue homeostasis and disease. It is unclear whether these functions correspond to distinct gd subsets or to a homogeneous population of cells exerting context-dependent effector functions. Here, by multimodal single-cell profiling of gd T cells across seven organs, we reveal that various tissues harbor unique site-adapted gd subsets. Epidermal and intestinal intraepithelial gd T cells are transcriptionally homogeneous and exhibit epigenetic hallmarks of functional diversity. Through parabiosis experiments, we discover distinct tissue-resident and exchanging gd subsets. We uncover cellular states associated with cytotoxicity, innate-like rapid IFN-g production and tissue repair functions in the spleen, liver, intestine, and skin displaying tissue residency hallmarks. Notably, our observations nuance the link between IL-17-producing gd T cells and tissue-residency as we identify tissue- and subset-specific residency properties of these cells. Moreover, transcriptional programs associated with tissue-resident gd T cells are analogous to those of CD8+ tissue-resident memory (TRM) T cells. Altogether, this study provides the first multimodal landscape of tissue-adapted gd T cells revealing heterogeneity as well as cellular and molecular hallmarks of their tissue residency program.
-
+γδ T cells perform heterogeneous functions in homeostasis and disease across tissues. However, it is unclear whether these roles correspond to distinct γδ subsets or to a homogeneous population of cells exerting context-dependent functions. Here, by cross-organ multimodal single-cell profiling, we reveal that various mouse tissues harbor unique site-adapted γδ subsets. Epidermal and intestinal intraepithelial γδ T cells are transcriptionally homogeneous and exhibit epigenetic hallmarks of functional diversity. Through parabiosis experiments, we uncovered cellular states associated with cytotoxicity, innate-like rapid interferon-γ production and tissue repair functions displaying tissue residency hallmarks. Notably, our observations add nuance to the link between interleukin-17-producing γδ T cells and tissue residency. Moreover, transcriptional programs associated with tissue-resident γδ T cells are analogous to those of CD8+ tissue-resident memory T cells. Altogether, this study provides a multimodal landscape of tissue-adapted γδ T cells, revealing heterogeneity, lineage relationships and their tissue residency program.
 
 Special thanks goes to: https://romanhaa.github.io/projects/scrnaseq_workflow/ for the beautiful codes.
 
