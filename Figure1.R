@@ -109,6 +109,18 @@ table_clusters_by_organ %>%
 
 # FIGURE 1F
 
+types <- as.data.frame(multimodal_gd_gex@meta.data)
+types$new_types <- types$seurat_clusters
+types2 <- types$new_types
+counts <- as.data.frame.matrix(t(table(types2,types$organ )))
+counts <- counts[c(1:4,6,7,8),]
+counts <- t(counts/rowSums(counts)*100)
+rownames(counts) <- c(paste0("C",c(0:21)))
+barplot(counts, col = custom_colors$discrete, border = "white",ylim = c(0, 100), axes = FALSE)
+axis(2, labels = c(0,20,40,60,80,100), at = c(0,20,40,60,80,100))
+
+# FIGURE 1G
+
 avg.exp <- AverageExpression(multimodal_gd_gex,features = VariableFeatures(multimodal_gd_gex), group.by = "organ")
 avg.exp <- as.data.frame(avg.exp$RNA)
 avg.exp$pooled <- NULL
