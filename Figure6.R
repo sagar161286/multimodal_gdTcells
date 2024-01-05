@@ -13,6 +13,14 @@ DimPlot(multimodal_gd_gex, group.by = "organ",reduction = "umap",cols = c('#12CB
 
 # download gd_parabiosis_milo.rds from here: https://drive.google.com/file/d/1rX6hu2aHXnn5WKn25AbzarOxx6W25oKy/view?usp=sharing
 
+library(miloR)
+library(SingleCellExperiment)
+library(scater)
+library(scran)
+library(dplyr)
+library(patchwork)
+library(Seurat)
+
 gd_parabiosis_milo.rds <- readRDS("gd_parabiosis_milo.rds")
 plotNhoodGraphDA(gd_parabiosis_milo.rds, da_results, layout="UMAP",alpha=0.1) 
 
