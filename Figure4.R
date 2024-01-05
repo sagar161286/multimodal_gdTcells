@@ -70,7 +70,9 @@ DimPlot(gd_atac, group.by = 'holygrail.celltype', pt.size = 0.1, cols = c('#FFC3
 
 # FIGURE 4C
 
-da_peaks_all <- readRDS("/data/gruen/sagar2/R/gd_multiome_scRNAseq_scATACseq/da_peaks_all_clusters.rds")
+# download da_peaks_all_clusters.rds from here: https://drive.google.com/file/d/11lkBjwPVmKqjK1O7juyxqH8ilAKH1gF7/view?usp=sharing
+
+da_peaks_all <- readRDS("da_peaks_all_clusters.rds")
 avg.exp <- AverageExpression(gd_atac, group.by = "ident", slot="data", return.seurat = F, features = unique(da_peaks_all$gene))
 avg.exp <- as.data.frame(avg.exp$ATAC)
 avg.exp[avg.exp > 5] <- 5
