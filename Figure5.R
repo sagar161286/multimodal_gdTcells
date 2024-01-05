@@ -1,22 +1,11 @@
-# download combined_commonpeaks_hm_integrated_only_atac.rds from here: https://drive.google.com/file/d/1LewftPzazsR1Ozy5rp-he2syG18Gr5L1/view?usp=share_link
+# download gd_with_vdj_final.rds from here: https://drive.google.com/file/d/19mnl5Ytigr98xKFvj1jPqFQcksvOQQcf/view?usp=sharing
 
-gd_atac <- readRDS("combined_commonpeaks_hm_integrated_only_atac.rds")
+gd.vdj <- readRDS("gd_with_vdj_final.rds")
 
-library(tidyverse)
-library(scran)
-library(patchwork)
-library(viridis)
-library(ggforce)
-library(gghalves)
-library(ggridges)
-library(scDblFinder)
-library(SingleR)
-library(wesanderson)
-library(pheatmap)
-
-# figure 5a
+# FIGURE 5A 
 
 custom_colors <- list()
+
 colors_dutch <- c(
   '#FFC312','#C4E538','#12CBC4','#FDA7DF','#ED4C67',
   '#A3CB38','#1289A7','#D980FA','#B53471',
@@ -25,24 +14,26 @@ colors_dutch <- c(
 )
 
 set.seed(123)
-clust.col = sample(rainbow(5))
+clust.col = sample(rainbow(10))
+
+gd.vdj@meta.data <- subset(gd.vdj@meta.data, gd.vdj@meta.data$seurat_clusters %in% c(0:18))
 custom_colors$discrete <- c(colors_dutch, clust.col)
 
 UMAP_centers_cluster <- tibble(
-  UMAP_1 = as.data.frame(gd_atac@reductions$umap@cell.embeddings)$UMAP_1,
-  UMAP_2 = as.data.frame(gd_atac@reductions$umap@cell.embeddings)$UMAP_2,
-  cluster = gd_atac@meta.data$seurat_clusters
+  UMAP_1 = as.data.frame(gd.vdj@reductions$umap@cell.embeddings)$UMAP_1,
+  UMAP_2 = as.data.frame(gd.vdj@reductions$umap@cell.embeddings)$UMAP_2,
+  cluster = gd.vdj@meta.data$seurat_clusters
 ) %>%
   group_by(cluster) %>%
   summarize(x = median(UMAP_1), y = median(UMAP_2))
 
-bind_cols(gd_atac@meta.data, as.data.frame(gd_atac@reductions$umap@cell.embeddings)) %>%
+p <- bind_cols(gd.vdj@meta.data, as.data.frame(gd.vdj@reductions$umap@cell.embeddings)) %>%
   ggplot(aes(UMAP_1, UMAP_2, color = seurat_clusters)) +
   geom_point(size = 0.2) +
   geom_label(
     data = UMAP_centers_cluster,
     mapping = aes(x, y, label = cluster),
-    size = 7,
+    size = 6,
     fill = 'white',
     color = 'black',
     fontface = 'bold',
@@ -53,64 +44,16 @@ bind_cols(gd_atac@meta.data, as.data.frame(gd_atac@reductions$umap@cell.embeddin
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  panel.background = element_blank())+
   scale_color_manual(
     name = 'Cluster', values = custom_colors$discrete,
-    guide = guide_legend(override.aes = list(size = 2))
+    guide = guide_legend(override.aes = list(size = 1))
   )
 
+p
 
-# fugure 5b
+# FIGURE 5B
 
-DimPlot(gd_atac, group.by = 'holygrail.celltype', pt.size = 0.1, cols = c('#FFC312','#C4E538','#12CBC4','#FDA7DF','grey','#ED4C67','#1289A7','#D980FA','#B53471'))
+DimPlot(gd.vdj, group.by = 'celltypes', pt.size = 0.1, label = F, label.box = F, cols = c('#C4E538','#12CBC4','#FDA7DF','grey','#ED4C67','#1289A7','#D980FA','#B53471'))
 
-# figure 5c
+# FIGURE 5C
 
-da_peaks_all <- readRDS("/data/gruen/sagar2/R/gd_multiome_scRNAseq_scATACseq/da_peaks_all_clusters.rds")
-avg.exp <- AverageExpression(gd_atac, group.by = "ident", slot="data", return.seurat = F, features = unique(da_peaks_all$gene))
-avg.exp <- as.data.frame(avg.exp$ATAC)
-avg.exp[avg.exp > 5] <- 5
-
-genes <- ClosestFeature(gd_atac, regions = rownames(avg.exp))
-genes$heatmap_id <- paste(genes$query_region, genes$gene_name, sep = "_")
-rownames(genes) <- genes$query_region
-heatmap_dataframe <- merge(genes, avg.exp, by = "row.names")
-rownames(heatmap_dataframe) <- heatmap_dataframe$heatmap_id
-heatmap_dataframe <- heatmap_dataframe[,c(11:27)]
-heatmap_dataframe2 <- heatmap_dataframe[, c(1,6,11,3,4,8,5,2,10,13,14,9,12,16,17,15,7)]
-pheatmap(heatmap_dataframe2, color = wes_palette("Zissou1", 10, type = "continuous"),show_rownames = F, fontsize_row = 1, cluster_rows = T, cluster_cols = T)
-
-# figure 5d
-
-factor(Idents(gd_atac), levels= c(0,5,10,2,3,7,4,1,9,12,13,8,11,15,16,14,6))
-Idents(gd_atac) <- factor(Idents(gd_atac), levels= c(0,5,10,2,3,7,4,1,9,12,13, 8,11,15,16,14,6))
-color.atac <- custom_colors$discrete[c(0,5,10,2,3,7,4,1,9,12,13,8,11,15,16,14,6)+1]
-
-p <- CoveragePlot(
-  object = gd_atac,
-  region = c("Cd24a"),
-  extend.upstream = 2000,
-  extend.downstream = 2000
-)
-
-p & scale_fill_manual(values = color.atac)
-
-# figure 5e
-
-p <- CoveragePlot(
-  object = gd_atac,
-  region = c("Ifng"),
-  extend.upstream = 2000,
-  extend.downstream = 2000
-)
-
-p & scale_fill_manual(values = color.atac)
-
-# figure 5f
-
-p <- CoveragePlot(
-  object = gd_atac,
-  region = c("Rorc"),
-  extend.upstream = 2000,
-  extend.downstream = 2000
-)
-
-p & scale_fill_manual(values = color.atac)
+DimPlot(gd.vdj, group.by = 'organ', pt.size = 0.1, label = F, label.box = F, cols = c('#FFC312','#833471','#1289A7','#A3CB38','#ED4C67'))
 
