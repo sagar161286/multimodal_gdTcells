@@ -23,7 +23,14 @@ https://drive.google.com/file/d/19mnl5Ytigr98xKFvj1jPqFQcksvOQQcf/view?usp=shari
 Afterwards, please run R script Figure5.R to reproduce figures in panel 4 in the paper.
 
 The filtered contig annotations file detailing the TCR repertoire of each cell can be download from here:
-https://drive.google.com/file/d/1oMa9cqgvseVPE6Uo5w9oOKZmg4vdINFC/view?usp=sharing This file should be used in conjunction with the Figure 5 Seurat R object downloaded from https://drive.google.com/file/d/19mnl5Ytigr98xKFvj1jPqFQcksvOQQcf/view?usp=sharing
+https://drive.google.com/file/d/1oMa9cqgvseVPE6Uo5w9oOKZmg4vdINFC/view?usp=sharing 
+This file should be used in conjunction with the Figure 5 Seurat R object previously downloaded from https://drive.google.com/file/d/19mnl5Ytigr98xKFvj1jPqFQcksvOQQcf/view?usp=sharing
+
+Please download the milo R object for Milo analysis used in Figure 6 here:
+https://drive.google.com/file/d/1rX6hu2aHXnn5WKn25AbzarOxx6W25oKy/view?usp=sharing
+Also download the differential abundance testing results here:
+https://drive.google.com/file/d/1uWUlp_rZgD1-d_8C3ji_a-FxSUuF29VA/view?usp=sharing
+Afterwards, please run R script Figure6.R to reproduce figures in panel 6 in the paper.
 
 ABSTRACT
 
